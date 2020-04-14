@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="SingletonPatternCurrentLocation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BfG-CI-jPJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iBC-ZQ-IBB">
+                                <rect key="frame" x="112" y="761" width="190" height="24.5"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="location" catalog="system">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Check Your Location">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="18" name="AvenirNext-Medium"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="checkUserLocationButtonWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gk3-ae-3P3"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ork-vK-u4d">
+                                <rect key="frame" x="160" y="805.5" width="94" height="60.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zoom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlC-hV-lW9">
+                                        <rect key="frame" x="24" y="0.0" width="46" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1000" maximumValue="10000" stepValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="Iyj-9b-BEl">
+                                        <rect key="frame" x="0.0" y="28.5" width="94" height="32"/>
+                                        <connections>
+                                            <action selector="ZoomStepper:" destination="BYZ-38-t0r" eventType="valueChanged" id="hZr-2r-0jg"/>
+                                        </connections>
+                                    </stepper>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.6682497973" blue="0.33929678200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BfG-CI-jPJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2Kh-Gq-h1L"/>
+                            <constraint firstItem="ork-vK-u4d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="372-bP-RJy"/>
+                            <constraint firstItem="iBC-ZQ-IBB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dij-G1-kQf"/>
+                            <constraint firstItem="iBC-ZQ-IBB" firstAttribute="top" secondItem="BfG-CI-jPJ" secondAttribute="bottom" constant="5" id="EDV-cB-VOn"/>
+                            <constraint firstItem="BfG-CI-jPJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N6I-3D-b3h"/>
+                            <constraint firstItem="BfG-CI-jPJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Vnk-uY-BEU"/>
+                            <constraint firstItem="ork-vK-u4d" firstAttribute="top" secondItem="iBC-ZQ-IBB" secondAttribute="bottom" constant="20" id="Y7J-Dz-Vqd"/>
+                            <constraint firstAttribute="bottom" secondItem="ork-vK-u4d" secondAttribute="bottom" constant="30" id="zCq-r9-gJc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="checkButton" destination="iBC-ZQ-IBB" id="Lj5-X3-efB"/>
+                        <outlet property="userMap" destination="BfG-CI-jPJ" id="xzr-Ah-DbO"/>
+                        <outlet property="zoomLabel" destination="AlC-hV-lW9" id="00N-Ms-hni"/>
+                        <outlet property="zoomStack" destination="ork-vK-u4d" id="KwG-kC-z2g"/>
+                        <outlet property="zoomStep" destination="Iyj-9b-BEl" id="72K-hW-avp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="102.45535714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="location" catalog="system" width="128" height="115"/>
+    </resources>
+</document>
