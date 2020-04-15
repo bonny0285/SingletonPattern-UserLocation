@@ -19,12 +19,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var zoomLabel: UILabel!
     @IBOutlet weak var zoomStack: UIStackView!
     
+    
+    var instance = MyUserLocation.shared
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        zoomStep.isHidden = true
-//        zoomLabel.isHidden = true
+
         zoomStack.isHidden = true
         
         if #available(iOS 13.0, *) {
@@ -44,11 +46,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBAction func checkUserLocationButtonWasPressed(_ sender: UIButton) {
         
-        MyUserLocation.shared.myMap = userMap
-        MyUserLocation.shared.checkLocationServices(forMapView: userMap,forAltitudeMeter: zoomStep.value,forLongitudeMeter: zoomStep.value)
+        instance.myMap = userMap
+        instance.checkLocationServices(forMapView: userMap, forAltitudeMeter: instance.altitudeMeter, forLongitudeMeter: instance.longitudeMeter)
         
-//        zoomStep.isHidden = false
-//        zoomLabel.isHidden = false
+        
+
         zoomStack.isHidden = false
     }
     
@@ -56,9 +58,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func ZoomStepper(_ sender: UIStepper) {
         print(zoomStep.value)
-        MyUserLocation.shared.altitudeMeter = zoomStep.stepValue
-        MyUserLocation.shared.longitudeMeter = zoomStep.stepValue
-        MyUserLocation.shared.checkLocationServices(forMapView: userMap,forAltitudeMeter: zoomStep.value,forLongitudeMeter: zoomStep.value)
+        
+        instance.altitudeMeter = zoomStep.stepValue
+        instance.longitudeMeter = zoomStep.stepValue
+        instance.checkLocationServices(forMapView: userMap, forAltitudeMeter: zoomStep.value, forLongitudeMeter: zoomStep.value)
+        
   
     }
     
