@@ -11,61 +11,62 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    
-    
+    //MARK: - Outlets
+
     @IBOutlet weak var userMap: MKMapView!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var zoomStep: UIStepper!
     @IBOutlet weak var zoomLabel: UILabel!
     @IBOutlet weak var zoomStack: UIStackView!
     
+    //MARK: - Properties
+
+    private var viewModel = MapViewModel()
+    private var currentZoom: Double = 0.0
     
-    var instance = MyUserLocation.shared
-    
+    //MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         zoomStack.isHidden = true
         
         if #available(iOS 13.0, *) {
-            // Always adopt a light interface style.
             overrideUserInterfaceStyle = .light
         }
-        userMap.delegate = self
-        
+                
         zoomStep.value = 1000
         zoomStep.minimumValue = 0
         zoomStep.maximumValue = 100000
+        zoomStep.wraps = false
         zoomStep.stepValue = 200
-        
-        
-
+        currentZoom = zoomStep.value
     }
+
+    //MARK: - Actions
 
     @IBAction func checkUserLocationButtonWasPressed(_ sender: UIButton) {
-        
-        instance.myMap = userMap
-        instance.checkLocationServices(forMapView: userMap, forAltitudeMeter: instance.altitudeMeter, forLongitudeMeter: instance.longitudeMeter)
-        
-        
-
+        viewModel.setMap(userMap)
         zoomStack.isHidden = false
+        checkButton.isEnabled = false
     }
-    
-    
-    
+
     @IBAction func ZoomStepper(_ sender: UIStepper) {
-        print(zoomStep.value)
         
-        instance.altitudeMeter = zoomStep.stepValue
-        instance.longitudeMeter = zoomStep.stepValue
-        instance.checkLocationServices(forMapView: userMap, forAltitudeMeter: zoomStep.value, forLongitudeMeter: zoomStep.value)
+        if currentZoom > zoomStep.value {
+            currentZoom += 200
+        } else if currentZoom < zoomStep.value {
+            currentZoom -= 200
+        }
         
-  
+        if currentZoom < 200 {
+            currentZoom = 200
+        } else if currentZoom > 100000 {
+            currentZoom = 100000
+        }
+        
+        zoomStep.value = currentZoom
+        
+        viewModel.updateZoomOnUserLocationForValue(currentZoom)
     }
-    
-    
 }
 

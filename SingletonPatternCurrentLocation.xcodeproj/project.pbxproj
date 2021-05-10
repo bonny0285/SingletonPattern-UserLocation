@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B43FA4D526442BFB001AB242 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43FA4D426442BFB001AB242 /* MapViewModel.swift */; };
 		B49B59A52445F9330002EDBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B59A42445F9330002EDBA /* AppDelegate.swift */; };
 		B49B59A72445F9330002EDBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B59A62445F9330002EDBA /* SceneDelegate.swift */; };
 		B49B59A92445F9330002EDBA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B59A82445F9330002EDBA /* MapViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B43FA4D426442BFB001AB242 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		B49B59A12445F9330002EDBA /* SingletonPatternCurrentLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SingletonPatternCurrentLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49B59A42445F9330002EDBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B49B59A62445F9330002EDBA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B43FA4D326442BDF001AB242 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B43FA4D426442BFB001AB242 /* MapViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B49B59982445F9330002EDBA = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +68,7 @@
 		B49B59A32445F9330002EDBA /* SingletonPatternCurrentLocation */ = {
 			isa = PBXGroup;
 			children = (
+				B43FA4D326442BDF001AB242 /* ViewModel */,
 				B49B59BA2445FACE0002EDBA /* Model */,
 				B49B59B92445FAC80002EDBA /* View */,
 				B49B59B82445FABE0002EDBA /* Controller */,
@@ -166,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B49B59A92445F9330002EDBA /* MapViewController.swift in Sources */,
+				B43FA4D526442BFB001AB242 /* MapViewModel.swift in Sources */,
 				B49B59BC2445FCB70002EDBA /* UserLocation.swift in Sources */,
 				B49B59A52445F9330002EDBA /* AppDelegate.swift in Sources */,
 				B49B59A72445F9330002EDBA /* SceneDelegate.swift in Sources */,
